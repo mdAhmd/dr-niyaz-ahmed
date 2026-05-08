@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Appointment | Dr. Niyaz Ahmed | Skin Care Clinic</title>
+  <meta name="description" content="Premium appointment website for Skin Care Clinic, Seoni. Book via WhatsApp with name, phone number, date, time, and concern message. Includes map and address." />
+  <meta name="theme-color" content="#07111f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-grid"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">+</div>
+        <div>
+          <h1>Skin Care Clinic</h1>
+          <p>Dr. Niyaz Ahmed · Appointment Booking</p>
+        </div>
+      </div>
+      <a class="call-btn" href="tel:+919303214285">Call Now</a>
+    </div>
+  </header>
+
+  <main class="container main">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Seoni · Premium Appointment Page</span>
+        <h2>Book your appointment in one clean step.</h2>
+        <p>
+          Enter your name, phone number, date, time, and concern. The message will open directly in WhatsApp
+          on <strong>+91 9303214285</strong>. Because making humans fill twenty forms for one appointment is a special kind of nonsense.
+        </p>
+
+        <div class="hero-badges">
+          <div>Mobile friendly</div>
+          <div>WhatsApp booking</div>
+          <div>Map embedded</div>
+          <div>Fast UI UX</div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="card-top">
+          <div class="status-dot"></div>
+          <span>Online booking open</span>
+        </div>
+        <h3>Appointment Form</h3>
+        <p class="muted">Fill the details below and send directly to WhatsApp.</p>
+
+        <form id="appointmentForm" class="form">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone Number</label>
+            <input id="phone" name="phone" type="tel" placeholder="Your number" required />
+          </div>
+
+          <div class="field">
+            <label for="date">Date</label>
+            <input id="date" name="date" type="date" required />
+          </div>
+
+          <div class="field">
+            <label for="time">Time</label>
+            <input id="time" name="time" type="time" required />
+          </div>
+
+          <div class="field full">
+            <label for="concern">Message / Concern</label>
+            <textarea id="concern" name="concern" rows="4" placeholder="Tell about the skin problem, hair fall, allergy, acne, or any concern..." required></textarea>
+          </div>
+
+          <button class="submit-btn" type="submit">Send Appointment on WhatsApp</button>
+        </form>
+
+        <div class="mini-note">
+          WhatsApp number: <strong>+91 9303214285</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-grid">
+      <article class="info-card">
+        <span class="icon">📍</span>
+        <h3>Address</h3>
+        <p>Sahu Kabadi, Punjabi Gurudwara Road, Gurunanak Ward, Qazi Mohalla, Seoni, Madhya Pradesh 480661</p>
+      </article>
+
+      <article class="info-card">
+        <span class="icon">🕒</span>
+        <h3>Working Hours</h3>
+        <p>Monday to Sunday<br>10:00 AM - 10:00 PM</p>
+      </article>
+
+      <article class="info-card">
+        <span class="icon">💬</span>
+        <h3>Direct WhatsApp</h3>
+        <p>Appointment details go straight to WhatsApp for fast confirmation.</p>
+      </article>
+    </section>
+
+    <section class="map-section">
+      <div class="section-head">
+        <span class="eyebrow">Location</span>
+        <h3>Find the clinic easily</h3>
+        <p>Map with address marked and written clearly below.</p>
+      </div>
+
+      <div class="map-wrap">
+        <iframe
+          title="Skin Care Clinic location map"
+          src="https://www.google.com/maps?q=Sahu%20Kabadi,%20Punjabi%20Gurudwara%20Road,%20Gurunanak%20Ward,%20Qazi%20Mohalla,%20Seoni,%20Madhya%20Pradesh%20480661&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+
+      <div class="address-box">
+        <strong>Skin Care Clinic - Dr. Niyaz Ahmed</strong>
+        <p>Sahu Kabadi, Punjabi Gurudwara Road, Gurunanak Ward, Qazi Mohalla, Seoni, Madhya Pradesh 480661</p>
+        <a target="_blank" rel="noreferrer" id="mapsLink" href="#">Open in Google Maps</a>
+      </div>
+    </section>
+  </main>
+
+  <a id="floatingWhatsapp" class="floating-whatsapp" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
+
+  <script src="script.js"></script>
+</body>
+</html>
