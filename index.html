@@ -3,139 +3,1821 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Book Appointment | Dr. Niyaz Ahmed | Skin Care Clinic</title>
-  <meta name="description" content="Premium appointment website for Skin Care Clinic, Seoni. Book via WhatsApp with name, phone number, date, time, and concern message. Includes map and address." />
-  <meta name="theme-color" content="#07111f" />
+  <meta name="description" content="Skin Care Clinic in Seoni by Dr. Niyaz Ahmed. Dermatology, skin care, hair fall, pigmentation, allergy and fungal infection treatments." />
+  <meta name="theme-color" content="#f8fafc" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>Skin Care Clinic | Dr. Niyaz Ahmed</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    "name": "Skin Care Clinic",
+    "description": "Skin Care Clinic in Seoni by Dr. Niyaz Ahmed.",
+    "telephone": "+91 9303214285",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Seoni",
+      "addressRegion": "Madhya Pradesh",
+      "addressCountry": "IN"
+    },
+    "medicalSpecialty": ["Dermatology"],
+    "url": "https://example.com"
+  }
+  </script>
+
+  <style>
+    :root{
+      --primary:#0ea5a4;
+      --primary-dark:#0f766e;
+      --gold:#c8a24d;
+      --text:#132033;
+      --muted:#64748b;
+      --bg:#f8fafc;
+      --white:#ffffff;
+      --border:#e5edf5;
+      --shadow:0 20px 50px rgba(15,23,42,.08);
+      --shadow-strong:0 24px 70px rgba(15,23,42,.12);
+      --radius:28px;
+      --radius2:22px;
+      --max:1240px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(14,165,164,.07), transparent 28%),
+        radial-gradient(circle at top left, rgba(200,162,77,.08), transparent 25%),
+        linear-gradient(180deg,#ffffff 0%, #f8fafc 100%);
+      overflow-x:hidden;
+    }
+
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    button,input,textarea{font:inherit}
+    [id]{scroll-margin-top:110px}
+
+    .container{
+      width:min(var(--max), calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    .section{
+      padding:92px 0;
+      position:relative;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:54px;
+    }
+
+    .section-title h2{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2rem,4vw,3.4rem);
+      line-height:1.05;
+      margin:14px 0 12px;
+      letter-spacing:-.03em;
+    }
+
+    .section-title p{
+      max-width:760px;
+      margin:0 auto;
+      color:var(--muted);
+      line-height:1.9;
+      font-size:1.03rem;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 15px;
+      border-radius:999px;
+      background:#eefaf9;
+      color:var(--primary-dark);
+      border:1px solid rgba(14,165,164,.12);
+      font-weight:700;
+      font-size:.88rem;
+    }
+
+    .eyebrow::before{
+      content:"";
+      width:8px;height:8px;
+      border-radius:50%;
+      background:var(--gold);
+      box-shadow:0 0 0 6px rgba(200,162,77,.15);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.6rem;
+      padding:14px 22px;
+      border-radius:999px;
+      font-weight:800;
+      border:1px solid transparent;
+      cursor:pointer;
+      transition:.28s ease;
+      white-space:nowrap;
+    }
+
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{
+      background:linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color:#fff;
+      box-shadow:0 14px 30px rgba(14,165,164,.22);
+    }
+    .btn-secondary{
+      background:#fff;
+      color:var(--text);
+      border-color:var(--border);
+      box-shadow:0 10px 25px rgba(15,23,42,.04);
+    }
+    .btn-outline{
+      background:transparent;
+      color:var(--text);
+      border-color:#d9e2eb;
+    }
+
+    .glass{
+      background:rgba(255,255,255,.88);
+      border:1px solid rgba(15,23,42,.08);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(24px);
+      transition:.8s ease;
+    }
+    .reveal.show{
+      opacity:1;
+      transform:none;
+    }
+    .reveal.left{transform:translateX(-22px)}
+    .reveal.right{transform:translateX(22px)}
+    .reveal.left.show,.reveal.right.show{transform:none}
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,.88);
+      border-bottom:1px solid rgba(15,23,42,.07);
+      backdrop-filter:blur(16px);
+    }
+
+    .navbar{
+      min-height:84px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:48px;height:48px;
+      border-radius:16px;
+      background:linear-gradient(135deg, rgba(14,165,164,.12), rgba(200,162,77,.16));
+      border:1px solid rgba(15,23,42,.08);
+      display:grid;
+      place-items:center;
+      box-shadow:0 10px 28px rgba(15,23,42,.06);
+      flex:0 0 auto;
+    }
+
+    .brand-mark svg{width:26px;height:26px;fill:#0f172a}
+
+    .brand strong{
+      display:block;
+      font-size:1rem;
+      letter-spacing:.25px;
+      margin-bottom:2px;
+    }
+    .brand span{
+      display:block;
+      font-size:.82rem;
+      color:var(--muted);
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:28px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a{
+      color:#334155;
+      font-weight:700;
+      position:relative;
+      font-size:.95rem;
+    }
+
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-8px;
+      width:100%;
+      height:2px;
+      background:linear-gradient(90deg,var(--primary),var(--primary-dark));
+      transform:scaleX(0);
+      transform-origin:left;
+      transition:.25s ease;
+    }
+
+    .nav-links a:hover::after{transform:scaleX(1)}
+    .nav-cta{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+
+    .burger{
+      display:none;
+      width:46px;
+      height:46px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:#fff;
+      color:var(--text);
+      font-size:1.1rem;
+      cursor:pointer;
+      box-shadow:0 10px 25px rgba(15,23,42,.04);
+    }
+
+    /* Hero */
+    .hero{
+      padding:34px 0 14px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.06fr .94fr;
+      gap:30px;
+      align-items:center;
+      min-height:calc(100vh - 110px);
+    }
+
+    .hero-copy{
+      display:flex;
+      flex-direction:column;
+      gap:22px;
+      justify-content:center;
+    }
+
+    .hero-copy h1{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(3rem,7vw,5.9rem);
+      line-height:.93;
+      letter-spacing:-.05em;
+      margin:0;
+    }
+
+    .hero-copy p{
+      color:var(--muted);
+      line-height:1.95;
+      font-size:1.05rem;
+      max-width:64ch;
+      margin:0;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .hero-badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .badge{
+      padding:11px 14px;
+      background:#fff;
+      border:1px solid var(--border);
+      color:#334155;
+      border-radius:999px;
+      box-shadow:0 10px 26px rgba(15,23,42,.04);
+      font-size:.9rem;
+      font-weight:600;
+    }
+
+    .hero-media{
+      position:relative;
+      border-radius:36px;
+      overflow:hidden;
+      min-height:680px;
+      aspect-ratio:4/5;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow-strong);
+      background:#f3f7fb;
+      isolation:isolate;
+    }
+
+    .hero-media::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(15,23,42,.12)),
+        radial-gradient(circle at top right, rgba(14,165,164,.16), transparent 28%);
+      z-index:1;
+      pointer-events:none;
+    }
+
+    .hero-media .bg-img{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.10)),
+        url('https://images.unsplash.com/photo-1579684453423-f84349ef60b0?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+      transform:scale(1.03);
+      animation:slowZoom 18s ease-in-out infinite alternate;
+    }
+
+    .floating-pill{
+      position:absolute;
+      top:20px;
+      left:20px;
+      z-index:4;
+      padding:12px 15px;
+      border-radius:999px;
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--border);
+      color:#0f172a;
+      box-shadow:0 10px 28px rgba(15,23,42,.08);
+      backdrop-filter:blur(10px);
+      font-weight:700;
+      font-size:.9rem;
+    }
+
+    .floating-pill.right{
+      left:auto;
+      right:20px;
+    }
+
+    .doctor-card{
+      position:absolute;
+      left:20px;
+      right:20px;
+      bottom:20px;
+      z-index:4;
+      display:grid;
+      grid-template-columns:120px 1fr;
+      gap:18px;
+      align-items:center;
+      padding:20px;
+      border-radius:28px;
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--border);
+      box-shadow:0 16px 40px rgba(15,23,42,.12);
+      backdrop-filter:blur(14px);
+    }
+
+    .doctor-photo{
+      width:120px;
+      height:120px;
+      border-radius:24px;
+      overflow:hidden;
+      background:#f3f7fb;
+      border:1px solid rgba(15,23,42,.08);
+      flex:0 0 auto;
+    }
+
+    .doctor-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+    }
+
+    .doctor-text h3{
+      font-family:'Playfair Display',serif;
+      font-size:1.8rem;
+      margin:0 0 6px;
+      letter-spacing:-.02em;
+    }
+
+    .doctor-text p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .doctor-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .chip{
+      padding:8px 11px;
+      border-radius:999px;
+      background:#f8fbfd;
+      border:1px solid var(--border);
+      color:#475569;
+      font-size:.82rem;
+      font-weight:600;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:-36px;
+      position:relative;
+      z-index:4;
+    }
+
+    .stat{
+      padding:26px;
+      border-radius:26px;
+      text-align:center;
+    }
+
+    .stat .num{
+      font-size:2.45rem;
+      line-height:1;
+      font-weight:800;
+      color:#0f172a;
+    }
+
+    .stat .label{
+      margin-top:8px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    /* About */
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+      align-items:center;
+    }
+
+    .about-image{
+      border-radius:32px;
+      overflow:hidden;
+      aspect-ratio:4/3;
+      background:#f3f7fb;
+      box-shadow:var(--shadow-strong);
+      border:1px solid var(--border);
+    }
+
+    .about-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+    }
+
+    .about-content h3{
+      font-family:'Playfair Display',serif;
+      font-size:2rem;
+      margin:0 0 16px;
+      letter-spacing:-.02em;
+    }
+
+    .about-content p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.95;
+      font-size:1.03rem;
+    }
+
+    .about-highlights{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:26px;
+    }
+
+    .highlight{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:22px 18px;
+      text-align:center;
+      box-shadow:0 10px 25px rgba(15,23,42,.04);
+    }
+
+    .highlight h4{
+      margin:0 0 6px;
+      color:var(--primary);
+      font-size:2rem;
+      line-height:1;
+    }
+
+    .highlight span{
+      color:var(--muted);
+      font-weight:600;
+      font-size:.95rem;
+    }
+
+    .about-notes{
+      display:grid;
+      gap:12px;
+      margin-top:22px;
+    }
+
+    .note{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:16px 0;
+      border-top:1px solid var(--border);
+    }
+    .note:first-child{border-top:none}
+    .note i{
+      width:22px;height:22px;
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+      flex:0 0 22px;
+      margin-top:3px;
+      position:relative;
+    }
+    .note i::after{
+      content:"";
+      position:absolute;
+      left:6px;top:5px;
+      width:7px;height:4px;
+      border-left:2px solid #fff;
+      border-bottom:2px solid #fff;
+      transform:rotate(-45deg);
+    }
+    .note strong{
+      display:block;
+      margin-bottom:3px;
+      color:#0f172a;
+      font-size:1rem;
+    }
+    .note p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.75;
+      font-size:.97rem;
+    }
+
+    /* Services */
+    .services-section{
+      background:#f8fafc;
+    }
+
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:22px;
+    }
+
+    .service-card{
+      background:#fff;
+      border:1px solid #e8eef4;
+      border-radius:24px;
+      padding:28px;
+      text-align:center;
+      transition:.33s ease;
+      box-shadow:0 10px 28px rgba(15,23,42,.04);
+      cursor:default;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .service-card::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background:radial-gradient(circle at top right, rgba(14,165,164,.08), transparent 40%);
+      pointer-events:none;
+    }
+
+    .service-card:hover{
+      transform:translateY(-10px);
+      border-color:#bfe8e4;
+      box-shadow:0 20px 45px rgba(14,165,164,.10);
+    }
+
+    .service-icon{
+      width:74px;
+      height:74px;
+      margin:0 auto 18px;
+      border-radius:20px;
+      display:grid;
+      place-items:center;
+      font-size:2rem;
+      background:linear-gradient(135deg, rgba(14,165,164,.12), rgba(20,184,166,.18));
+      border:1px solid rgba(14,165,164,.12);
+    }
+
+    .service-card h3{
+      margin:0 0 10px;
+      color:#132033;
+      font-size:1.18rem;
+    }
+
+    .service-card p{
+      margin:0;
+      color:#64748b;
+      line-height:1.8;
+      font-size:.96rem;
+    }
+
+    /* Gallery */
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:18px;
+      margin-top:8px;
+    }
+
+    .gallery-item{
+      position:relative;
+      overflow:hidden;
+      border-radius:26px;
+      min-height:260px;
+      background:#fff;
+      border:1px solid #e5edf5;
+      box-shadow:0 12px 30px rgba(15,23,42,.06);
+      cursor:pointer;
+      transition:.3s ease;
+    }
+
+    .gallery-item:hover{
+      transform:translateY(-8px);
+      box-shadow:0 20px 45px rgba(14,165,164,.12);
+    }
+
+    .gallery-item img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      transition:.5s ease;
+    }
+
+    .gallery-item:hover img{
+      transform:scale(1.06);
+    }
+
+    .gallery-overlay{
+      position:absolute;
+      inset:auto 0 0 0;
+      padding:18px;
+      background:linear-gradient(180deg, transparent, rgba(0,0,0,.64));
+      color:#fff;
+      display:flex;
+      align-items:flex-end;
+      min-height:88px;
+      pointer-events:none;
+    }
+
+    .gallery-overlay span{
+      font-size:1rem;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .gallery-item.large{grid-column:span 7; min-height:360px;}
+    .gallery-item.wide{grid-column:span 8; min-height:300px;}
+    .gallery-item:not(.large):not(.wide){grid-column:span 4; min-height:300px;}
+
+    /* Reviews */
+    .reviews-section{
+      background:#fff;
+    }
+
+    .reviews-summary{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:6px;
+      margin-bottom:24px;
+    }
+
+    .summary-card{
+      background:#f8fbfd;
+      border:1px solid #e5edf5;
+      border-radius:22px;
+      padding:24px;
+      text-align:center;
+      box-shadow:0 10px 28px rgba(15,23,42,.05);
+    }
+
+    .summary-card h3{
+      margin:0 0 8px;
+      font-size:2rem;
+      color:#0f172a;
+    }
+
+    .summary-card p{
+      margin:0;
+      color:#64748b;
+      line-height:1.7;
+    }
+
+    .reviews-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .review-card{
+      background:#fff;
+      border:1px solid #e5edf5;
+      border-radius:24px;
+      padding:26px;
+      box-shadow:0 12px 34px rgba(15,23,42,.05);
+      transition:.3s ease;
+      height:100%;
+    }
+
+    .review-card:hover{
+      transform:translateY(-8px);
+      border-color:#bfe8e4;
+      box-shadow:0 20px 45px rgba(14,165,164,.10);
+    }
+
+    .review-top{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin-bottom:14px;
+    }
+
+    .review-avatar{
+      width:54px;
+      height:54px;
+      border-radius:18px;
+      background:linear-gradient(135deg,#0ea5a4,#14b8a6);
+      color:#fff;
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      font-size:.95rem;
+      flex:0 0 auto;
+    }
+
+    .review-top h4{
+      margin:0;
+      color:#132033;
+      font-size:1.02rem;
+    }
+
+    .review-top span{
+      display:block;
+      margin-top:4px;
+      color:#64748b;
+      font-size:.86rem;
+    }
+
+    .stars{
+      color:#e7b84f;
+      letter-spacing:2px;
+      margin-bottom:14px;
+      font-size:1rem;
+    }
+
+    .review-card p{
+      color:#475569;
+      line-height:1.82;
+      margin:0;
+    }
+
+    /* Contact */
+    .contact-section{
+      background:#f8fafc;
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 1.2fr;
+      gap:24px;
+      margin-top:8px;
+      align-items:stretch;
+    }
+
+    .contact-info-card,
+    .appointment-card{
+      background:#fff;
+      border:1px solid #e5edf5;
+      border-radius:28px;
+      padding:30px;
+      box-shadow:0 12px 34px rgba(15,23,42,.06);
+    }
+
+    .contact-info-card h3,
+    .appointment-card h3{
+      margin:0 0 22px;
+      color:#132033;
+      font-size:1.5rem;
+    }
+
+    .contact-item{
+      padding:16px 0;
+      border-bottom:1px solid #edf2f7;
+    }
+
+    .contact-item:last-of-type{
+      border-bottom:none;
+    }
+
+    .contact-item strong{
+      display:block;
+      margin-bottom:6px;
+      color:#0f172a;
+      font-size:.95rem;
+    }
+
+    .contact-item p{
+      margin:0;
+      color:#64748b;
+      line-height:1.7;
+    }
+
+    .contact-item a{
+      color:var(--primary);
+      font-weight:700;
+    }
+
+    .contact-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    form{
+      display:grid;
+      gap:14px;
+    }
+
+    input,textarea{
+      width:100%;
+      padding:15px 16px;
+      border:1px solid var(--border);
+      border-radius:16px;
+      background:#fff;
+      outline:none;
+      color:#0f172a;
+      transition:.2s ease;
+    }
+
+    input:focus,textarea:focus{
+      border-color:#9ddbd5;
+      box-shadow:0 0 0 4px rgba(14,165,164,.10);
+    }
+
+    textarea{
+      resize:vertical;
+      min-height:130px;
+    }
+
+    .map-container{
+      margin-top:24px;
+      width:100%;
+      height:520px;
+      border-radius:28px;
+      overflow:hidden;
+      border:1px solid #e5edf5;
+      box-shadow:0 12px 34px rgba(15,23,42,.06);
+      background:#fff;
+    }
+
+    .map-container iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+      pointer-events:auto;
+      touch-action:auto;
+    }
+
+    /* Footer */
+    footer{
+      background:#132033;
+      color:#fff;
+      padding:60px 0 24px;
+      margin-top:92px;
+    }
+
+    .footer-content{
+      display:grid;
+      grid-template-columns:1.2fr 1fr 1fr;
+      gap:36px;
+    }
+
+    .footer-content h3,
+    .footer-content h4{
+      margin:0 0 14px;
+      font-family:'Playfair Display',serif;
+      letter-spacing:-.02em;
+    }
+
+    .footer-content p,
+    .footer-content a{
+      color:#d6dde6;
+      line-height:2;
+    }
+
+    .footer-content a:hover{
+      color:#fff;
+    }
+
+    .copyright{
+      text-align:center;
+      margin-top:40px;
+      padding-top:24px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:#9fb0c4;
+      font-size:.92rem;
+    }
+
+    /* Modal */
+    .image-modal{
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.9);
+      z-index:9999;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+    }
+
+    .image-modal.open{
+      display:flex;
+    }
+
+    .image-modal img{
+      max-width:min(1100px, 92vw);
+      max-height:88vh;
+      border-radius:20px;
+      box-shadow:0 30px 90px rgba(0,0,0,.35);
+      object-fit:cover;
+    }
+
+    #closeModal{
+      position:absolute;
+      top:24px;
+      right:32px;
+      font-size:52px;
+      line-height:1;
+      color:#fff;
+      cursor:pointer;
+      user-select:none;
+    }
+
+    /* Top progress bar */
+    .progress{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:3px;
+      z-index:9999;
+      background:rgba(15,23,42,.05);
+    }
+    .progress span{
+      display:block;
+      width:0;
+      height:100%;
+      background:linear-gradient(90deg, var(--primary), var(--primary-dark), var(--gold));
+    }
+
+    /* Scroll animation utility */
+    .fade-group > *{
+      opacity:0;
+      transform:translateY(18px);
+    }
+    .fade-group.show > *{
+      opacity:1;
+      transform:none;
+      transition:.75s ease;
+    }
+
+    /* Mobile CTA */
+    .mobile-cta{
+      display:none;
+      position:fixed;
+      left:14px;
+      right:14px;
+      bottom:14px;
+      z-index:999;
+      gap:10px;
+    }
+    .mobile-cta a{
+      flex:1;
+      text-align:center;
+      padding:13px 12px;
+      border-radius:18px;
+      font-weight:800;
+      font-size:.95rem;
+    }
+
+    /* Responsive */
+    @media (max-width:1100px){
+      .hero-grid,
+      .about-grid,
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+
+      .stats{
+        grid-template-columns:repeat(2,1fr);
+        margin-top:18px;
+      }
+
+      .services-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .reviews-summary,
+      .reviews-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .footer-content{
+        grid-template-columns:1fr;
+      }
+
+      .gallery-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .gallery-item.large,
+      .gallery-item.wide,
+      .gallery-item:not(.large):not(.wide){
+        grid-column:span 1;
+        min-height:280px;
+      }
+    }
+
+    @media (max-width:820px){
+      .nav-links,
+      .nav-cta{
+        display:none;
+      }
+      .burger{
+        display:inline-grid;
+        place-items:center;
+      }
+
+      .hero{
+        padding-top:16px;
+      }
+
+      .hero-grid{
+        min-height:auto;
+      }
+
+      .hero-copy h1{
+        font-size:clamp(2.5rem, 12vw, 4rem);
+      }
+
+      .hero-media{
+        min-height:auto;
+        aspect-ratio:1/1.12;
+      }
+
+      .doctor-card{
+        grid-template-columns:1fr;
+      }
+
+      .doctor-photo{
+        width:110px;
+        height:110px;
+      }
+
+      .about-highlights{
+        grid-template-columns:1fr;
+      }
+
+      .services-grid,
+      .reviews-summary,
+      .reviews-grid,
+      .gallery-grid{
+        grid-template-columns:1fr;
+      }
+
+      .map-container{
+        height:360px;
+      }
+
+      .mobile-cta{
+        display:flex;
+      }
+
+      .section{
+        padding:72px 0;
+      }
+
+      .gallery-item.large,
+      .gallery-item.wide,
+      .gallery-item:not(.large):not(.wide){
+        min-height:260px;
+      }
+
+      .contact-buttons{
+        flex-direction:column;
+      }
+
+      .contact-buttons .btn{
+        width:100%;
+      }
+    }
+
+    @media (max-width:520px){
+      .container{
+        width:min(var(--max), calc(100% - 20px));
+      }
+
+      .hero-actions,
+      .hero-badges{
+        flex-direction:column;
+      }
+
+      .hero-actions .btn{
+        width:100%;
+      }
+
+      .stat,
+      .service-card,
+      .review-card,
+      .summary-card,
+      .contact-info-card,
+      .appointment-card{
+        padding:22px;
+      }
+
+      .hero-media{
+        border-radius:26px;
+      }
+
+      .doctor-card{
+        left:14px;
+        right:14px;
+        bottom:14px;
+        padding:16px;
+        border-radius:22px;
+      }
+
+      .floating-pill.right{
+        top:78px;
+      }
+
+      .map-container{
+        height:340px;
+        border-radius:22px;
+      }
+
+      .image-modal img{
+        max-width:96vw;
+        max-height:78vh;
+      }
+
+      #closeModal{
+        top:18px;
+        right:18px;
+        font-size:44px;
+      }
+    }
+
+    @keyframes slowZoom{
+      0%{transform:scale(1.03)}
+      100%{transform:scale(1.09)}
+    }
+  </style>
 </head>
 <body>
-  <div class="bg-orb orb-1"></div>
-  <div class="bg-orb orb-2"></div>
-  <div class="bg-grid"></div>
 
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand">
-        <div class="brand-mark">+</div>
-        <div>
-          <h1>Skin Care Clinic</h1>
-          <p>Dr. Niyaz Ahmed · Appointment Booking</p>
+  <div class="progress"><span id="progressBar"></span></div>
+
+  <header>
+    <div class="container navbar">
+      <a class="brand" href="#home" aria-label="Skin Care Clinic Home">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.14 2 5 5.14 5 9c0 4.24 3.56 7.74 6 12 2.44-4.26 6-7.76 6-12 0-3.86-3.14-7-5-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
         </div>
+        <div>
+          <strong>Skin Care Clinic</strong>
+          <span>Dr. Niyaz Ahmed</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" id="menu">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-secondary" href="tel:+919303214285">Call</a>
+        <a class="btn btn-primary" href="#contact">Book Appointment</a>
       </div>
-      <a class="call-btn" href="tel:+919303214285">Call Now</a>
+
+      <button class="burger" id="burger" aria-label="Open menu">☰</button>
     </div>
   </header>
 
-  <main class="container main">
+  <main id="home">
+    <!-- HERO -->
     <section class="hero">
-      <div class="hero-copy">
-        <span class="eyebrow">Seoni · Premium Appointment Page</span>
-        <h2>Book your appointment in one clean step.</h2>
-        <p>
-          Enter your name, phone number, date, time, and concern. The message will open directly in WhatsApp
-          on <strong>+91 9303214285</strong>. Because making humans fill twenty forms for one appointment is a special kind of nonsense.
-        </p>
+      <div class="container hero-grid">
+        <div class="hero-copy reveal left">
+          <span class="eyebrow">Dermatologist • Skin Specialist</span>
+          <h1>Healthy skin. Better care.</h1>
+          <p>
+            Skin Care Clinic by Dr. Niyaz Ahmed offers treatment and consultation for acne, pigmentation,
+            hair fall, fungal infections, allergies, eczema, psoriasis, vitiligo and general skin care.
+          </p>
 
-        <div class="hero-badges">
-          <div>Mobile friendly</div>
-          <div>WhatsApp booking</div>
-          <div>Map embedded</div>
-          <div>Fast UI UX</div>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Book Appointment</a>
+            <a href="tel:+919303214285" class="btn btn-secondary">Call Now</a>
+            <a href="https://wa.me/919303214285" target="_blank" rel="noopener" class="btn btn-secondary">WhatsApp</a>
+          </div>
+
+          <div class="hero-badges">
+            <div class="badge">17+ Years Experience</div>
+            <div class="badge">10,000+ Patients Treated</div>
+            <div class="badge">Open Daily 10 AM - 10 PM</div>
+          </div>
+        </div>
+
+        <div class="hero-media reveal right">
+          <div class="bg-img"></div>
+          <div class="floating-pill">Best Skin Doctor in Seoni</div>
+          <div class="floating-pill right">Call for Appointment</div>
+
+          <div class="doctor-card glass">
+            <div class="doctor-photo">
+              <!-- Replace with your own doctor photo -->
+              <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=900&q=80" alt="Dr. Niyaz Ahmed">
+            </div>
+            <div class="doctor-text">
+              <h3>Dr. Niyaz Ahmed</h3>
+              <p>Dermatologist • Skin Specialist • Hair Expert</p>
+              <div class="doctor-meta">
+                <span class="chip">B.E.M.S from Nagpur</span>
+                <span class="chip">17+ Years Experience</span>
+                <span class="chip">Seoni, Madhya Pradesh</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="hero-card">
-        <div class="card-top">
-          <div class="status-dot"></div>
-          <span>Online booking open</span>
+      <div class="container stats reveal">
+        <div class="stat glass">
+          <div class="num counter" data-target="17">0</div>
+          <div class="label">Years Experience</div>
         </div>
-        <h3>Appointment Form</h3>
-        <p class="muted">Fill the details below and send directly to WhatsApp.</p>
-
-        <form id="appointmentForm" class="form">
-          <div class="field">
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" placeholder="Your name" required />
-          </div>
-
-          <div class="field">
-            <label for="phone">Phone Number</label>
-            <input id="phone" name="phone" type="tel" placeholder="Your number" required />
-          </div>
-
-          <div class="field">
-            <label for="date">Date</label>
-            <input id="date" name="date" type="date" required />
-          </div>
-
-          <div class="field">
-            <label for="time">Time</label>
-            <input id="time" name="time" type="time" required />
-          </div>
-
-          <div class="field full">
-            <label for="concern">Message / Concern</label>
-            <textarea id="concern" name="concern" rows="4" placeholder="Tell about the skin problem, hair fall, allergy, acne, or any concern..." required></textarea>
-          </div>
-
-          <button class="submit-btn" type="submit">Send Appointment on WhatsApp</button>
-        </form>
-
-        <div class="mini-note">
-          WhatsApp number: <strong>+91 9303214285</strong>
+        <div class="stat glass">
+          <div class="num counter" data-target="10000">0</div>
+          <div class="label">Patients Treated</div>
+        </div>
+        <div class="stat glass">
+          <div class="num counter" data-target="58">0</div>
+          <div class="label">Main Treatments</div>
+        </div>
+        <div class="stat glass">
+          <div class="num counter" data-target="100">0</div>
+          <div class="label">% Personal Care</div>
         </div>
       </div>
     </section>
 
-    <section class="info-grid">
-      <article class="info-card">
-        <span class="icon">📍</span>
-        <h3>Address</h3>
-        <p>Sahu Kabadi, Punjabi Gurudwara Road, Gurunanak Ward, Qazi Mohalla, Seoni, Madhya Pradesh 480661</p>
-      </article>
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-title reveal">
+          <span class="eyebrow">About Doctor</span>
+          <h2>Meet Dr. Niyaz Ahmed</h2>
+          <p>Experienced dermatologist providing diagnosis and treatment for a wide range of skin and hair related conditions.</p>
+        </div>
 
-      <article class="info-card">
-        <span class="icon">🕒</span>
-        <h3>Working Hours</h3>
-        <p>Monday to Sunday<br>10:00 AM - 10:00 PM</p>
-      </article>
+        <div class="about-grid">
+          <div class="about-image reveal left">
+            <!-- Replace with your own clinic/doctor image -->
+            <img src="https://images.unsplash.com/photo-1579684453423-f84349ef60b0?auto=format&fit=crop&w=1400&q=80" alt="Dr. Niyaz Ahmed">
+          </div>
 
-      <article class="info-card">
-        <span class="icon">💬</span>
-        <h3>Direct WhatsApp</h3>
-        <p>Appointment details go straight to WhatsApp for fast confirmation.</p>
-      </article>
+          <div class="about-content reveal right">
+            <h3>Trusted Skin Care Specialist</h3>
+            <p>
+              Dr. Niyaz Ahmed has over 17 years of clinical experience in treating skin, hair and allergy related conditions.
+              His patient-focused approach and practical treatment plans have helped thousands of individuals improve their skin health and confidence.
+            </p>
+
+            <div class="about-highlights">
+              <div class="highlight">
+                <h4>17+</h4>
+                <span>Years Experience</span>
+              </div>
+              <div class="highlight">
+                <h4>10K+</h4>
+                <span>Patients Treated</span>
+              </div>
+              <div class="highlight">
+                <h4>Daily</h4>
+                <span>Consultation</span>
+              </div>
+            </div>
+
+            <div class="about-notes">
+              <div class="note">
+                <i></i>
+                <div>
+                  <strong>Skin consultation</strong>
+                  <p>For acne, pigmentation, fungal infections, allergies and other skin problems.</p>
+                </div>
+              </div>
+              <div class="note">
+                <i></i>
+                <div>
+                  <strong>Hair treatment</strong>
+                  <p>For hair fall, thinning and scalp related concerns for men and women.</p>
+                </div>
+              </div>
+              <div class="note">
+                <i></i>
+                <div>
+                  <strong>skin care</strong>
+                  <p>Gentle care with clear guidance, realistic treatment and follow-up support.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="map-section">
-      <div class="section-head">
-        <span class="eyebrow">Location</span>
-        <h3>Find the clinic easily</h3>
-        <p>Map with address marked and written clearly below.</p>
-      </div>
+    <!-- SERVICES -->
+    <section id="services" class="section services-section">
+      <div class="container">
+        <div class="section-title reveal">
+          <span class="eyebrow">Our Services</span>
+          <h2>Specialized Skin & Hair Treatments</h2>
+          <p>Comprehensive diagnosis and treatment for common and advanced skin conditions.</p>
+        </div>
 
-      <div class="map-wrap">
-        <iframe
-          title="Skin Care Clinic location map"
-          src="https://www.google.com/maps?q=Sahu%20Kabadi,%20Punjabi%20Gurudwara%20Road,%20Gurunanak%20Ward,%20Qazi%20Mohalla,%20Seoni,%20Madhya%20Pradesh%20480661&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
-      </div>
+        <div class="services-grid">
+          <div class="service-card reveal left">
+            <div class="service-icon">✨</div>
+            <h3>Acne & Pimples</h3>
+            <p>Treatment for acne, pimples, acne scars and recurring breakouts.</p>
+          </div>
 
-      <div class="address-box">
-        <strong>Skin Care Clinic - Dr. Niyaz Ahmed</strong>
-        <p>Sahu Kabadi, Punjabi Gurudwara Road, Gurunanak Ward, Qazi Mohalla, Seoni, Madhya Pradesh 480661</p>
-        <a target="_blank" rel="noreferrer" id="mapsLink" href="#">Open in Google Maps</a>
+          <div class="service-card reveal">
+            <div class="service-icon">🧴</div>
+            <h3>Pigmentation</h3>
+            <p>Solutions for uneven skin tone, dark spots and pigmentation concerns.</p>
+          </div>
+
+          <div class="service-card reveal right">
+            <div class="service-icon">💇</div>
+            <h3>Hair Fall Treatment</h3>
+            <p>Professional consultation for hair fall, thinning and scalp issues.</p>
+          </div>
+
+          <div class="service-card reveal left">
+            <div class="service-icon">🌿</div>
+            <h3>Skin Allergies</h3>
+            <p>Diagnosis and treatment for itching, redness and allergic reactions.</p>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-icon">🩺</div>
+            <h3>Fungal Infections</h3>
+            <p>Medical care for fungal infections affecting skin, nails and scalp.</p>
+          </div>
+
+          <div class="service-card reveal right">
+            <div class="service-icon">☀️</div>
+            <h3>Eczema & Psoriasis</h3>
+            <p>Long-term management and treatment plans for chronic skin conditions.</p>
+          </div>
+
+          <div class="service-card reveal left">
+            <div class="service-icon">🤍</div>
+            <h3>Vitiligo Care</h3>
+            <p>Evaluation and treatment options for vitiligo and depigmentation disorders.</p>
+          </div>
+
+          <div class="service-card reveal right">
+            <div class="service-icon">🌟</div>
+            <h3>Skin Care</h3>
+            <p>Guidance and treatment for healthy, clear and well-maintained skin.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="section">
+      <div class="container">
+        <div class="section-title reveal">
+          <span class="eyebrow">Gallery</span>
+          <h2>Clinic & Doctor Gallery</h2>
+          <p>A clean visual showcase of the clinic, doctor, consultation space and treatment environment.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item large reveal left" data-full="https://images.unsplash.com/photo-1496756514264-20a5d5ee3c6e?auto=format&fit=crop&w=1800&q=80">
+            <img src="https://images.unsplash.com/photo-1496756514264-20a5d5ee3c6e?auto=format&fit=crop&w=1200&q=80" alt="Doctors">
+            <div class="gallery-overlay"><span>Doctors</span></div>
+          </div>
+
+          <div class="gallery-item reveal right" data-full="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1800&q=80">
+            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1200&q=80" alt="Doctor portrait">
+            <div class="gallery-overlay"><span>Dr. Niyaz Ahmed</span></div>
+          </div>
+
+          <div class="gallery-item reveal left" data-full="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1800&q=80">
+            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80" alt="Patient">
+            <div class="gallery-overlay"><span>Patient</span></div>
+          </div>
+
+          <div class="gallery-item reveal right" data-full="https://images.unsplash.com/photo-1579684453423-f84349ef60b0?auto=format&fit=crop&w=1800&q=80">
+            <img src="https://images.unsplash.com/photo-1579684453423-f84349ef60b0?auto=format&fit=crop&w=1200&q=80" alt="Consultation room">
+            <div class="gallery-overlay"><span>Consultation Room</span></div>
+          </div>
+
+          <div class="gallery-item wide reveal left" data-full="https://images.unsplash.com/photo-1519494080410-f9aa76cb4283?auto=format&fit=crop&w=1800&q=80">
+            <img src="https://images.unsplash.com/photo-1519494080410-f9aa76cb4283?auto=format&fit=crop&w=1200&q=80" alt="Patient">
+            <div class="gallery-overlay"><span>patient</span></div>
+          </div>
+
+          <div class="gallery-item reveal right" data-full="https://images.unsplash.com/photo-1522338140262-f46f5913618a?auto=format&fit=crop&w=1800&q=80">
+            <img src="https://images.unsplash.com/photo-1522338140262-f46f5913618a?auto=format&fit=crop&w=1200&q=80" alt="Clinic Exterior">
+            <div class="gallery-overlay"><span>Clinic Exterior</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="section reviews-section">
+      <div class="container">
+        <div class="section-title reveal">
+          <span class="eyebrow">Patient Reviews</span>
+          <h2>What Patients Say</h2>
+          <p>Patients feedback about consultation, treatment approach and clinic experience.</p>
+        </div>
+
+        <div class="reviews-summary">
+          <div class="summary-card reveal left">
+            <h3>4.9/5</h3>
+            <p>Average rating from patient feedback</p>
+          </div>
+          <div class="summary-card reveal">
+            <h3>1000+</h3>
+            <p>Positive patient visits</p>
+          </div>
+          <div class="summary-card reveal right">
+            <h3>17+ Years</h3>
+            <p>Trusted clinical experience</p>
+          </div>
+        </div>
+
+        <div class="reviews-grid">
+          <div class="review-card reveal left">
+            <div class="review-top">
+              <div class="review-avatar">AS</div>
+              <div>
+                <h4>Aarti Sharma</h4>
+                <span>Acne Treatment</span>
+              </div>
+            </div>
+            <div class="stars">★★★★★</div>
+            <p>Dr. Niyaz Ahmed listened carefully and explained the treatment clearly. The clinic felt clean, calm and professional.</p>
+          </div>
+
+          <div class="review-card reveal">
+            <div class="review-top">
+              <div class="review-avatar">RP</div>
+              <div>
+                <h4>Rajesh Prajapati</h4>
+                <span>Hair Fall Treatment</span>
+              </div>
+            </div>
+            <div class="stars">★★★★★</div>
+            <p>I visited for hair fall and scalp issues. The doctor gave proper guidance and the consultation was very clear.</p>
+          </div>
+
+          <div class="review-card reveal right">
+            <div class="review-top">
+              <div class="review-avatar">MT</div>
+              <div>
+                <h4>Meena Tiwari</h4>
+                <span>Skin Allergy</span>
+              </div>
+            </div>
+            <div class="stars">★★★★★</div>
+            <p>Very good experience. The doctor understood my  fungal allergy problem quickly and gave practical advice.</p>
+          </div>
+
+          <div class="review-card reveal left">
+            <div class="review-top">
+              <div class="review-avatar">VK</div>
+              <div>
+                <h4>Vijay Kumar</h4>
+                <span>Pigmentation</span>
+              </div>
+            </div>
+            <div class="stars">★★★★★</div>
+            <p>The treatment advice was helpful and the follow-up was well managed. The clinic is organized and trustworthy.</p>
+          </div>
+
+          <div class="review-card reveal">
+            <div class="review-top">
+              <div class="review-avatar">NS</div>
+              <div>
+                <h4>Neha Sahu</h4>
+                <span>General Skin Care</span>
+              </div>
+            </div>
+            <div class="stars">★★★★★</div>
+            <p>I came for a general skin issue and the doctor explained everything clearly. The experience felt genuine and comfortable.</p>
+          </div>
+
+          <div class="review-card reveal right">
+            <div class="review-top">
+              <div class="review-avatar">SK</div>
+              <div>
+                <h4>Sachin Khatri</h4>
+                <span>Fungal Infection</span>
+              </div>
+            </div>
+            <div class="stars">★★★★★</div>
+            <p>The clinic gave proper attention to my issue and the advice was practical. Booking and follow-up were smooth.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT + APPOINTMENT -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="section-title reveal">
+          <span class="eyebrow">Contact & Map</span>
+          <h2>Visit Skin Care Clinic</h2>
+          <p>Contact the clinic directly, get directions, or book an appointment through WhatsApp or phone.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info-card reveal left">
+            <h3>Clinic Details</h3>
+
+            <div class="contact-item">
+              <strong>Doctor</strong>
+              <p>Dr. Niyaz Ahmed</p>
+            </div>
+
+            <div class="contact-item">
+              <strong>Phone</strong>
+              <p><a href="tel:+919303214285">+91 9303214285</a></p>
+            </div>
+
+            <div class="contact-item">
+              <strong>Hours</strong>
+              <p>10:00 AM - 10:00 PM</p>
+            </div>
+
+            <div class="contact-item">
+              <strong>Location</strong>
+              <p>Seoni, Madhya Pradesh, India</p>
+            </div>
+
+            <div class="contact-buttons">
+              <a href="tel:+919303214285" class="btn btn-primary">Call Now</a>
+              <a href="https://wa.me/919303214285" target="_blank" rel="noopener" class="btn btn-secondary">WhatsApp</a>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=Dr%20Niyaz%20Ahmed%20Dermatologist%20Skin%20Care%20Clinic%20Seoni" target="_blank" rel="noopener" class="btn btn-outline">Get Directions</a>
+            </div>
+          </div>
+
+          <div class="appointment-card reveal right">
+            <h3>Book Appointment</h3>
+
+            <form id="appointmentForm">
+              <input type="text" placeholder="Full Name" required id="name">
+              <input type="tel" placeholder="Phone Number" required id="phone">
+              <input type="date" placeholder="Date" required id="date">
+              <input type="time" placeholder="Time" required id="time">
+              <textarea placeholder="Tell about the skin problem, hair fall, allergy, acne, or any concern..." id="concern"></textarea>
+              <button type="submit" class="btn btn-primary">Book via WhatsApp</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="map-container reveal">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3697.009557081137!2d79.54714161106567!3d22.087451979756214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a2ab1c9c98a2f63%3A0x43d54af6c7d462a2!2sDr%20Niyaz%20Ahmed%20%7C%20Dermatologist%20%7C%20Skin%20Care%20Clinic%20%7C%20Skin%20Specialist%20%7C%20Doctor%20in%20Seoni%20%7C%20Skin%20Clinic%20Seoni!5e0!3m2!1sen!2sin!4v1781508723824!5m2!1sen!2sin"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Skin Care Clinic Map"></iframe>
+        </div>
       </div>
     </section>
   </main>
 
-  <a id="floatingWhatsapp" class="floating-whatsapp" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
+  <footer>
+    <div class="container footer-content">
+      <div>
+        <h3>Skin Care Clinic</h3>
+        <p><a href="https://drniyazahmed.simdif.com" target="_blank" style="text-decoration:none; color:inherit;">
+         Dr. Niyaz Ahmed</a>
+<br>
+<a href="https://drniyazahmed.simdif.com" target="_blank" style="text-decoration:none; color:inherit;">
+          Dermatologist & Skin Specialist</a>
+</p>
+        <p>
+          <a href="https://www.youtube.com/@YourChannel" target="_blank">YouTube</a> | 
+        <a href="https://www.google.com/search?q=Skin+Care+Clinic+Seoni" target="_blank">Google</a>
+      </p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="#about">About</a><br>
+        <a href="#services">Services</a><br>
+        <a href="#gallery">Gallery</a><br>
+        <a href="#reviews">Reviews</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p><a href="tel:+919303214285">+91 9303214285</a></p>
+        <p><a href="https://www.google.com/maps/dir/?api=1&destination=Dr%20Niyaz%20Ahmed%20Dermatologist%20Skin%20Care%20Clinic%20Seoni"target="_blank" style="text-decoration:none; color:inherit;">Seoni, Madhya Pradesh</a></p>
+      </div>
+    </div>
+    <div class="container copyright">
+      © 2026 Skin Care Clinic. All Rights Reserved.
+    </div>
+  </footer>
 
-  <script src="script.js"></script>
+  <!-- Gallery Modal -->
+  <div id="imageModal" class="image-modal" aria-hidden="true">
+    <span id="closeModal" aria-label="Close">&times;</span>
+    <img id="modalImage" alt="Gallery preview">
+  </div>
+
+  <script>
+    // Top progress bar
+    const progressBar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      progressBar.style.width = pct + '%';
+    });
+
+    // Header shadow on scroll
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      header.style.boxShadow = window.scrollY > 10 ? '0 10px 30px rgba(15,23,42,.06)' : 'none';
+    });
+
+
+    // Mobile menu
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    burger.addEventListener('click', () => {
+      const isOpen = menu.style.display === 'flex';
+      if (isOpen) {
+        menu.style.display = 'none';
+      } else {
+        menu.style.display = 'flex';
+        menu.style.flexDirection = 'column';
+        menu.style.position = 'absolute';
+        menu.style.top = '84px';
+        menu.style.right = '16px';
+        menu.style.padding = '16px';
+        menu.style.borderRadius = '20px';
+        menu.style.background = 'rgba(255,255,255,.98)';
+        menu.style.border = '1px solid var(--border)';
+        menu.style.boxShadow = 'var(--shadow)';
+        menu.style.minWidth = '220px';
+        menu.style.gap = '14px';
+      }
+    });
+
+    document.querySelectorAll('#menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 820) menu.style.display = 'none';
+      });
+    });
+
+    // Reveal animations
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // Counter animation
+    const counters = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = +el.dataset.target;
+        const duration = 1700;
+        const start = performance.now();
+
+        function tick(now) {
+          const p = Math.min((now - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.floor(ease * target).toLocaleString();
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.45 });
+    counters.forEach(c => counterObserver.observe(c));
+
+    // Gallery modal
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const modalClose = document.getElementById('closeModal');
+
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        modalImg.src = item.dataset.full || img.src;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    const closeGalleryModal = () => {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      modalImg.src = '';
+    };
+
+    modalClose.addEventListener('click', closeGalleryModal);
+    modal.addEventListener('click', e => {
+      if (e.target === modal) closeGalleryModal();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeGalleryModal();
+    });
+
+    // Appointment form -> WhatsApp
+    document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const problem = document.getElementById('problem').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const text =
+`Hello Doctor,
+
+Name: ${name}
+Phone: ${phone}
+Problem: ${problem}
+
+Message:
+${message}
+
+I would like to book an appointment.`;
+
+      const url = `https://wa.me/919303214285?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank', 'noopener');
+      this.reset();
+    });
+  </script>
 </body>
 </html>
