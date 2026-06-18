@@ -1472,7 +1472,7 @@
       
           <div class="gallery-item wide reveal left" data-full="image/Dr-Niyaz-Ahmed-Skin-Care-Clinic-Skin-Clinic-Seoni-best-dermatologist-seoni-skin-seoni-skin-india-best-skin-clinic-best-skin-doctor-best-dermatologist.jpg">
             <img src="image/Dr-Niyaz-Ahmed-Skin-Care-Clinic-Skin-Clinic-Seoni-best-dermatologist-seoni-skin-seoni-skin-india-best-skin-clinic-best-skin-doctor-best-dermatologist.jpg" alt="dr niyaz ahmed">
-            <div class="gallery-overlay"><span>.</span></div>
+            <div class="gallery-overlay"><span>Dr. Niyaz Ahmed</span></div>
           </div>
           
           <div class="gallery-item wide reveal left" data-full="image/patient.png">
@@ -1665,8 +1665,8 @@
           Dermatologist & Skin Specialist</a>
 </p>
         <p>
-          <a href="https://www.youtube.com/@YourChannel" target="_blank">YouTube</a> | 
-        <a href="https://www.google.com/search?q=Skin+Care+Clinic+Seoni" target="_blank">Google</a>
+          <a href="https://youtube.com/@dr.niyazahmed?si=PrI7Zkgx0V-tBDtK" target="_blank">YouTube</a> | 
+        <a href="https://www.google.com/search?q=dr+niyaz+ahmed+Seoni" target="_blank">Google</a>
       </p>
       </div>
       <div>
@@ -1799,30 +1799,47 @@
     });
 
     // Appointment form -> WhatsApp
-    document.getElementById('appointmentForm').addEventListener('submit', function(e) {
-      e.preventDefault();
+document.getElementById('appointmentForm')
+.addEventListener('submit', function(e){
 
-      const name = document.getElementById('name').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const problem = document.getElementById('problem').value.trim();
-      const message = document.getElementById('message').value.trim();
+    e.preventDefault();
 
-      const text =
-`Hello Doctor,
+    const name =
+    document.getElementById('name').value;
 
-Name: ${name}
-Phone: ${phone}
-Problem: ${problem}
+    const phone =
+    document.getElementById('phone').value;
 
-Message:
-${message}
+    const date =
+    document.getElementById('date').value;
 
+    const time =
+    document.getElementById('time').value;
+
+    const concern =
+    document.getElementById('concern').value;
+
+    const text =
+`*New Appointment Request*
+
+👤 Name: ${name}
+
+📞 Phone: ${phone}
+
+📅 Date: ${date}
+
+⏰ Time: ${time}
+
+🩺 Concern:
+${concern}
 I would like to book an appointment.`;
 
-      const url = `https://wa.me/919303214285?text=${encodeURIComponent(text)}`;
-      window.open(url, '_blank', 'noopener');
-      this.reset();
-    });
-  </script>
+    const whatsappURL =
+    `https://wa.me/919303214285?text=${encodeURIComponent(text)}`;
+
+    window.open(whatsappURL, '_blank');
+
+});
+</script>
 </body>
 </html>
