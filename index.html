@@ -13,7 +13,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-
 :root{--bg:#f6f7f2;--surface:#fff;--surface2:#eef2eb;--ink:#151815;--text:#343a33;--muted:#70786f;--sage:#738b6f;--sageDark:#4f654c;--line:rgba(20,30,20,.10);--soft:rgba(20,30,20,.06);--shadow:0 24px 80px rgba(31,42,31,.10);--shadow2:0 14px 45px rgba(31,42,31,.07);--ease:cubic-bezier(.2,.8,.2,1)}
 *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;overflow-x:hidden}body.lock{overflow:hidden}a{color:inherit;text-decoration:none}img{display:block;width:100%}button,input,select{font:inherit}button{cursor:pointer}.loader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:grid;place-items:center;transition:.7s}.loader.hide{opacity:0;visibility:hidden;pointer-events:none}.loader strong{display:block;text-align:center;font:600 34px/1 "Playfair Display",serif}.loadline{width:130px;height:2px;background:#dcdfd8;margin:16px auto 0;overflow:hidden}.loadline i{display:block;width:35%;height:100%;background:var(--sageDark);animation:load 1s infinite ease-in-out}@keyframes load{from{transform:translateX(-170%)}to{transform:translateX(420%)}}
 .header{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:18px 4%;transition:.35s var(--ease)}.header.scrolled{padding:10px 4%}.nav{max-width:1380px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:11px 14px 11px 16px;border:1px solid rgba(255,255,255,.78);background:rgba(255,255,255,.78);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-radius:999px;box-shadow:0 10px 35px rgba(20,30,20,.06)}.brand{display:flex;align-items:center;gap:10px;min-width:0}.mark{width:42px;height:42px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:600 18px "Playfair Display",serif;flex:none}.brand strong{display:block;font:600 16px/1.1 "Playfair Display",serif;white-space:nowrap}.brand small{display:block;margin-top:4px;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:1.55px;white-space:nowrap}.links{display:flex;gap:24px;color:#565d55;font-size:13px}.links a:hover{color:var(--sageDark)}.navActions{display:flex;gap:8px}.pill{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:11px 16px;font-size:12px;font-weight:700;white-space:nowrap;transition:.25s}.pill.call{background:#fff;border:1px solid var(--line)}.pill.book{background:var(--ink);color:#fff}.pill:hover{transform:translateY(-2px)}.menu{display:none;border:0;background:none;width:42px;height:42px;font-size:23px}.mobileNav{display:none}
@@ -32,7 +31,7 @@
 @media(max-width:1000px){.links{display:none}.menu{display:block}.navActions{display:none}.mobileNav{position:absolute;top:72px;left:8px;right:8px;padding:22px;display:none;flex-direction:column;gap:7px;background:rgba(255,255,255,.95);backdrop-filter:blur(22px);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow)}.mobileNav.open{display:flex}.mobileNav a{padding:13px 10px;border-radius:14px}.mobileNav a:hover{background:#f2f4ef}.heroGrid,.consult,.doctorGrid{grid-template-columns:1fr}.heroMedia{max-width:720px;margin:auto}.heroMedia img{height:560px}.darkGrid,.appointmentGrid,.contactGrid{grid-template-columns:1fr}.darkImg{height:460px}.darkCopy,.appointmentCopy,.contactCopy{padding:60px 36px}.consultQuote{position:static}.serviceGrid{grid-template-columns:1fr 1fr}.reviewGrid{grid-template-columns:1fr 1fr}.statsGrid{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}.doctorImg{height:540px}.formBox{margin:30px}.map,.map iframe{min-height:400px}}
 @media(max-width:650px){.header{padding:11px 3%}.header.scrolled{padding:8px 3%}.nav{padding:10px 11px}.mark{width:38px;height:38px}.brand-text strong{font-size:14px}.brand-text small{font-size:7px;letter-spacing:1px}.hero{padding:120px 5% 55px}.heroGrid{gap:43px}.hero h1{font-size:55px;letter-spacing:-2.7px}.lead{font-size:15px}.credential{font-size:9px}.heroMedia img{height:470px;border-radius:30px}.heroMedia:after{border-radius:30px}.heroCard{left:14px;bottom:18px;width:210px}.section{padding:85px 5%}.title{font-size:46px}.darkPanel,.appointment,.contactPanel{border-radius:29px}.darkCopy,.appointmentCopy,.contactCopy{padding:48px 25px}.darkImg{height:360px}.processCard{padding:20px}.processCard h3{font-size:22px}.serviceGrid,.reviewGrid,.qualGrid{grid-template-columns:1fr}.service{min-height:235px}.statsGrid{grid-template-columns:1fr 1fr}.stat{padding:28px 8px}.stat strong{font-size:34px}.doctorImg{height:450px}.doctorName{font-size:48px}.media iframe{height:260px}.appointmentGrid .formBox{margin:18px;padding:21px;border-radius:23px}.formHead{display:block}.formHead span{display:block;margin-top:7px}.formGrid{grid-template-columns:1fr}.field.full{grid-column:auto}.map,.map iframe{min-height:330px}.footerRow{flex-direction:column;align-items:flex-start}.float{right:12px;bottom:12px}.float a{width:49px;height:49px}}
 
- /* Gallery */
+/* Gallery */
     .gallery-grid{
       display:grid;
       grid-template-columns:repeat(12,1fr);
@@ -91,174 +90,6 @@
     .gallery-item.wide{grid-column:span 8; min-height:300px;}
     .gallery-item:not(.large):not(.wide){grid-column:span 4; min-height:300px;}
 
-
- /* Hero */
-    .hero{
-      padding:34px 0 14px;
-    }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.06fr .94fr;
-      gap:30px;
-      align-items:center;
-      min-height:calc(100vh - 110px);
-    }
-
-    .hero-copy{
-      display:flex;
-      flex-direction:column;
-      gap:22px;
-      justify-content:center;
-    }
-
-    .hero-copy h1{
-      font-family:'Playfair Display',serif;
-      font-size:clamp(3rem,7vw,5.9rem);
-      line-height:.93;
-      letter-spacing:-.05em;
-      margin:0;
-    }
-
-    .hero-copy p{
-      color:var(--muted);
-      line-height:1.95;
-      font-size:1.05rem;
-      max-width:64ch;
-      margin:0;
-    }
-
-    .hero-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .hero-badges{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-    }
-
-    .badge{
-      padding:11px 14px;
-      background:#fff;
-      border:1px solid var(--border);
-      color:#334155;
-      border-radius:999px;
-      box-shadow:0 10px 26px rgba(15,23,42,.04);
-      font-size:.9rem;
-      font-weight:600;
-    }
-
-    .hero-media{
-      position:relative;
-      border-radius:36px;
-      overflow:hidden;
-      min-height:680px;
-      aspect-ratio:4/5;
-      border:1px solid var(--border);
-      box-shadow:var(--shadow-strong);
-      background:#f3f7fb;
-      isolation:isolate;
-    }
-
-    .hero-media::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.04), rgba(15,23,42,.12)),
-        radial-gradient(circle at top right, rgba(14,165,164,.16), transparent 28%);
-      z-index:1;
-      pointer-events:none;
-    }
-
-    .hero-media .bg-img{
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.10)),
-        url('https://images.unsplash.com/photo-1579684453423-f84349ef60b0?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
-      transform:scale(1.03);
-      animation:slowZoom 18s ease-in-out infinite alternate;
-    }
-
-    .floating-pill{
-      position:absolute;
-      top:20px;
-      left:20px;
-      z-index:4;
-      padding:12px 15px;
-      border-radius:999px;
-      background:rgba(255,255,255,.92);
-      border:1px solid var(--border);
-      color:#0f172a;
-      box-shadow:0 10px 28px rgba(15,23,42,.08);
-      backdrop-filter:blur(10px);
-      font-weight:700;
-      font-size:.9rem;
-    }
-
-    .floating-pill.right{
-      left:auto;
-      right:20px;
-    }
-
-    .doctor-card{
-      position:absolute;
-      left:20px;
-      right:20px;
-      bottom:20px;
-      z-index:4;
-      display:grid;
-      grid-template-columns:120px 1fr;
-      gap:18px;
-      align-items:center;
-      padding:20px;
-      border-radius:28px;
-      background:rgba(255,255,255,.92);
-      border:1px solid var(--border);
-      box-shadow:0 16px 40px rgba(15,23,42,.12);
-      backdrop-filter:blur(14px);
-    }
-
-    .doctor-photo{
-      width:120px;
-      height:120px;
-      border-radius:24px;
-      overflow:hidden;
-      background:#f3f7fb;
-      border:1px solid rgba(15,23,42,.08);
-      flex:0 0 auto;
-    }
-
-    .doctor-photo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:center;
-    }
-
-    .doctor-text h3{
-      font-family:'Playfair Display',serif;
-      font-size:1.8rem;
-      margin:0 0 6px;
-      letter-spacing:-.02em;
-    }
-
-    .doctor-text p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.75;
-    }
-
-    .doctor-meta{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:12px;
-
 </style>
 </head>
 <body>
@@ -281,28 +112,8 @@
 <div class="actions"><a class="btn dark" href="#appointment">📅 Book Appointment</a><a class="btn light" href="tel:+919303214285">📞 Call +91 9303214285</a><a class="btn light" href="treatments.html">Explore 184+ Treatments →</a></div>
 <div class="heroTrust"><div><strong>18+</strong>Years of Experience</div><div><strong>22.4K+</strong>Patients Treated</div><div><strong>MD DVL</strong>Specialist Qualification</div></div>
 </div>
-  <div class="hero-media reveal right">
-          <div class="bg-img"></div>
-          <div class="floating-pill">Best Skin Doctor in Seoni</div>
-          <div class="floating-pill right">Call for Appointment</div>
-
-          <div class="doctor-card glass">
-            <div class="doctor-photo">
-              <!-- Replace with your own doctor photo -->
-              <img src="image/dr-niyaz-ahmed.png" alt="Dr. Niyaz Ahmed">
-            </div>
-            <div class="doctor-text">
-              <h3>Dr. Niyaz Ahmed</h3>
-              <p>Dermatologist • Skin Specialist • Hair Expert</p>
-              <div class="doctor-meta">
-                <span class="chip">MD Dermatologist</span>
-                <span class="chip">18+ Years Experience</span>
-                <span class="chip">Seoni, Madhya Pradesh</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div></section>
+<div class="heroMedia reveal"><img src="image/dr-niyaz-ahmed.png" alt="Dr. Niyaz Ahmed, Dermatologist in Seoni"><div class="heroCard"><small>Skin Care Clinic · Seoni</small><strong>Dr. Niyaz Ahmed, Dermatologist</strong><span>Skin · Hair · Health</span></div></div>
+</div></section>
 
 
 <section class="section" id="about"><div class="container"><div class="darkPanel reveal"><div class="darkGrid"><div class="darkCopy"><div class="kicker">A specialist approach</div><h2 class="title">Not just a quick look. <em>We listen first.</em></h2><p>At Skin Care Clinic, Dr. Niyaz Ahmed follows a consultation-first approach. The goal is to understand what is happening to your skin or hair before deciding what should happen next.</p><div class="tags"><span>Acne & Pimples</span><span>Fungal Infections</span><span>Hair Fall</span><span>Pigmentation</span><span>Allergies</span><span>Cosmetic Dermatology</span></div></div><img class="darkImg" src="https://drniyazahmed.simdif.com/images/public/sd_6690d74db4372.png?no_cache=1720775543" alt="Skin Care Clinic Seoni"></div></div></div></section>
@@ -345,7 +156,7 @@
 <section class="section" id="faq"><div class="container"><div class="reveal" style="margin-bottom:45px"><div class="kicker">Frequently asked</div><h2 class="title">Questions, answered.</h2></div><div class="faq"><div class="faqItem reveal"><button class="faqQ">What is Dr. Niyaz Ahmed’s qualification?<span>+</span></button><div class="faqA">Dr. Niyaz Ahmed’s listed qualification is MD Dermatology, Venereology & Leprosy, with a Fellowship in Cosmetic & Laser Dermatology and 18+ years of experience.</div></div><div class="faqItem reveal"><button class="faqQ">How long is the consultation?<span>+</span></button><div class="faqA">The consultation is designed to provide at least 30 minutes for listening, clinical assessment, explanation of the condition, treatment planning and follow-up discussion.</div></div><div class="faqItem reveal"><button class="faqQ">How do I book an appointment?<span>+</span></button><div class="faqA">Use the appointment form above to create a WhatsApp request, or call the clinic directly at +91 9303214285.</div></div><div class="faqItem reveal"><button class="faqQ">Do you provide cosmetic and laser dermatology?<span>+</span></button><div class="faqA">The doctor has Fellowship training in Cosmetic & Laser Dermatology. Whether a particular procedure is suitable is decided after consultation and assessment.</div></div><div class="faqItem reveal"><button class="faqQ">Where is the clinic located?<span>+</span></button><div class="faqA">Skin Care Clinic is in Seoni, Madhya Pradesh. Use the map below for the location, and call before visiting to confirm current clinic availability.</div></div></div></div></section>
 
 <section class="section" id="contact"><div class="container"><div class="contactPanel reveal"><div class="contactGrid"><div class="contactCopy"><div class="kicker">Visit the clinic</div><h2 class="title">Call or book.<br><em>Simple.</em></h2><p>The two quickest ways to reach the clinic are a direct call or a WhatsApp appointment request.</p><div class="info"><div class="infoRow"><div class="infoIcon">📞</div><div><small>Call</small><strong>+91 9303214285</strong></div></div><div class="infoRow"><div class="infoIcon">📍</div><div><small>Location</small><strong>Seoni, Madhya Pradesh</strong></div></div><div class="infoRow"><div class="infoIcon">🕐</div><div><small>Listed hours</small><strong>10 AM – 10 PM</strong></div></div></div><div class="actions"><a class="btn dark" href="tel:+919303214285">📞 Call Clinic</a><a class="btn light" href="#appointment">Book Appointment</a></div></div><div class="map"><iframe src="https://www.google.com/maps?q=22.087452,79.5497219&z=16&output=embed" title="Skin Care Clinic location in Seoni" loading="lazy"></iframe></div></div></div></div></section>
-  
+
 <!-- GALLERY -->
     <section id="gallery" class="section">
       <div class="container">
